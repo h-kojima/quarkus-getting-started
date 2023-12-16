@@ -25,3 +25,23 @@ public class GreetingResource {
         return "hello";
     }
 }
+
+@Path("/bye")
+public class GreetingResource {
+
+    @Inject
+    GreetingService service;
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/greeting/{name}")
+    public String greeting(String name) {
+        return service.greeting(name);
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String bye() {
+        return "bye";
+    }
+}
